@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
 class BookView extends Component {
+    constructor(props) {
+        super(props)
+
+        this.changeShelf = this.changeShelf.bind(this)
+    }
+
+    changeShelf(e) {
+        this.props.onChangeShelf(this.props.book, e.target.value)
+    }
+
     render() {
         return (
             <li>
@@ -8,7 +18,7 @@ class BookView extends Component {
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
                         <div className="book-shelf-changer">
-                            <select value={this.props.book.shelf}>
+                            <select value={this.props.book.shelf} onChange={this.changeShelf}>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>

@@ -10,7 +10,7 @@ class HomePage extends Component {
                     <h1>MyReads</h1>
                 </div>
 
-                <BooksList books={this.props.books} />
+                <BooksList books={this.props.books} onChangeShelf={this.props.onChangeShelf} />
 
                 <div className="open-search">
                     <Link to={'/search'}>Add a book</Link>

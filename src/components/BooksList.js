@@ -10,7 +10,7 @@ class BooksList extends Component {
                         <h2 className="bookshelf-title">Currently Reading</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.props.books.filter((book) => book.shelf === "currentlyReading").map((book) => <BookView key={book.id} book={book} />)}
+                                {this.props.books.filter((book) => book.shelf === "currentlyReading").map((book) => <BookView key={book.id} book={book} onChangeShelf={this.props.onChangeShelf} />)}
                             </ol>
                         </div>
                     </div>
@@ -18,7 +18,7 @@ class BooksList extends Component {
                         <h2 className="bookshelf-title">Want to Read</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.props.books.filter((book) => book.shelf === "wantToRead").map((book) => <BookView key={book.id} book={book} />)}
+                                {this.props.books.filter((book) => book.shelf === "wantToRead").map((book) => <BookView key={book.id} book={book} onChangeShelf={this.props.onChangeShelf} />)}
                             </ol>
                         </div>
                     </div>
@@ -26,7 +26,7 @@ class BooksList extends Component {
                         <h2 className="bookshelf-title">Read</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.props.books.filter((book) => book.shelf === "read").map((book) => <BookView key={book.id} book={book} />)}
+                                {this.props.books.filter((book) => book.shelf === "read").map((book) => <BookView key={book.id} book={book} onChangeShelf={this.props.onChangeShelf} />)}
                             </ol>
                         </div>
                     </div>

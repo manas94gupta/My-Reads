@@ -6,23 +6,32 @@ import SearchPage from './components/SearchPage.js'
 import './App.css'
 
 class BooksApp extends React.Component {
-    state = {
-        books: []
+    constructor(props) {
+        super(props)
+        this.state = {
+            books: []
+        }
+
+        this.onChangeShelf = this.onChangeShelf.bind(this)
     }
 
     componentDidMount() {
         this.getBooks()
     }
 
-    getBooks = () => {
+    getBooks() {
         BooksAPI.getAll().then((books) => this.setState({books}))
+    }
+
+    onChangeShelf(book, shelf) {
+        BooksAPI.update(book, shelf).then(() => this.getBooks())
     }
 
     render() {
         return (
             <div className="app">
                 <Route exact path="/" render={() => (
-                    <HomePage books={this.state.books} />
+                    <HomePage books={this.state.books} onChangeShelf={this.onChangeShelf} />
                 )}/>
                 <Route path="/search" component={SearchPage}/>
             </div>
