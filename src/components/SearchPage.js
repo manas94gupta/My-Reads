@@ -7,13 +7,15 @@ class SearchPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            books: []
+            books: [],
+            searchValue: ''
         }
 
         this.handleSearch = this.handleSearch.bind(this)
     }
 
     handleSearch(e) {
+        this.setState({searchValue: e.target.value})
         BooksAPI.search(e.target.value, 10).then((books) => books && books.length > 0 ? this.setState({books}) : this.setState({books: []}))
     }
 
@@ -31,7 +33,7 @@ class SearchPage extends Component {
                             However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                             you don't find a specific author or title. Every search is limited by search terms.
                         */}
-                        <input type="text" placeholder="Search by title or author" onChange={this.handleSearch} />
+                        <input type="text" placeholder="Search by title or author" value={this.state.searchValue} onChange={this.handleSearch} />
 
                     </div>
                 </div>
