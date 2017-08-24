@@ -39,7 +39,15 @@ class SearchPage extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {this.state.books.map((book) => <BookView key={book.id} book={book} onChangeShelf={this.props.onChangeShelf} />)}
+                        {/* {this.state.books.map((book) => <BookView key={book.id} book={book} onChangeShelf={this.props.onChangeShelf} />)} */}
+                        {this.state.books.map(
+                            (book) => {
+                                let displayBook = this.props.currentBooks.reduce(
+                                    (book, currentBook) => currentBook.id === book.id ? currentBook : book, book
+                                )
+                                return <BookView key={displayBook.id} book={displayBook} onChangeShelf={this.props.onChangeShelf} />
+                            }
+                        )}
                     </ol>
                 </div>
             </div>
