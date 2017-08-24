@@ -18,8 +18,8 @@ class BookView extends Component {
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
                         <div className="book-shelf-changer">
-                            <select value={this.props.book.shelf} defaultValue="none" onChange={this.changeShelf}>
-                                <option value="none" disabled>Move to...</option>
+                            <select value={this.props.book.shelf ? this.props.book.shelf : "none"} onChange={this.changeShelf}>
+                                <option value="" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>
