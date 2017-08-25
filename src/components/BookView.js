@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class BookView extends Component {
     constructor(props) {
@@ -33,6 +34,11 @@ class BookView extends Component {
             </li>
         )
     }
+}
+
+BookView.propTypes = {
+    book: PropTypes.object.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
 }
 
 export default BookView

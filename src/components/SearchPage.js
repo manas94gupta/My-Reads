@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from '../BooksAPI';
-import BookView from './BookView.js'
+import BookView from './BookView.js';
+import PropTypes from 'prop-types';
 
 class SearchPage extends Component {
     constructor(props) {
@@ -53,6 +54,11 @@ class SearchPage extends Component {
             </div>
         )
     }
+}
+
+SearchPage.propTypes = {
+    currentBooks: PropTypes.array.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
 }
 
 export default SearchPage
